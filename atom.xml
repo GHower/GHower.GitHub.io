@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ghower.github.io/"/>
-  <updated>2022-03-29T10:19:10.942Z</updated>
+  <updated>2022-03-31T02:20:13.417Z</updated>
   <id>http://ghower.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>接口与抽象类的区别</title>
+    <link href="http://ghower.github.io//post/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.html"/>
+    <id>http://ghower.github.io//post/接口与抽象类的区别.html</id>
+    <published>2022-03-31T01:55:00.000Z</published>
+    <updated>2022-03-31T02:20:13.417Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h1><ol><li>都不能被实例化</li><li>两者的方法必须全部被实现后才能实例化</li></ol><h1 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h1><ol><li>接口只有定义，没有实现(jdk8后可以有一个default方法),<br>抽象类可以有定义和实现，方法可在抽象类中实现。</li><li>抽象类只能一层继承一层，而接口可以做到间接的实现多重继承，<br>当然不是真的多重继承</li><li>接口强调功能实现，而抽象类强调所属关系</li><li>修饰符不同 <ul><li>接口变量默认修饰为<code>public static final</code> ,必须赋初值。</li><li>接口方法默认修饰<code>public abstract</code></li><li>抽象类变量默认修饰为 <code>default</code></li><li>抽象类方法默认为<code>public abstract</code></li></ul></li></ol><h1 id="一点说明"><a href="#一点说明" class="headerlink" title="一点说明"></a>一点说明</h1><p>接口设计是对类的行为进行约束，提供一种机制，强制要求类具有相同的行为。<br>只是约束了行为的有无，不约束具体的行为实现，</p><blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot=""><path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path><path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path><path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path></svg></span><p>比如 动物都会叫(公共行为)，但狗和猪的叫声(具体行为实现)不同。</p></blockquote><p>抽象类的设计是代码复用，若类具有相同行为，且方式一致时，可以让这些类<br>派生于同一个抽象类，使得相同的实现代码，只需要写一次，<br>继承的方法虽然可以重写实现，但通常我们不重写它。</p><p>抽象类表达的是一种<code>is A</code>的关系，接口表达的是<code>like A</code>的关系。<br>比如 <code>宝马是车</code> 和 <code>飞机像鸟一样可以飞</code> ， 后者飞机的本质是机械<br>不是真的<code>鸟</code> ，但是也具备鸟的行为特点(<code>飞</code>) 。</p><p>所以，不难得出结论，接口的核心就是定义行为，即实现接口的类可以做什么<br>至于实现类是谁，怎么实现的，接口不关心</p><p>总结： 若关注事务的本质，使用抽象类; 若关注的是操作，用接口；</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;相同点&quot;&gt;&lt;a href=&quot;#相同点&quot; class=&quot;headerlink&quot; title=&quot;相同点&quot;&gt;&lt;/a&gt;相同点&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;都不能被实例化&lt;/li&gt;
+&lt;li&gt;两者的方法必须全部被实现后才能实例化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;不同点&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="面试题" scheme="http://ghower.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+      <category term="java" scheme="http://ghower.github.io/tags/java/"/>
+    
+      <category term="面试题" scheme="http://ghower.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>GithubPages搭建教程</title>
